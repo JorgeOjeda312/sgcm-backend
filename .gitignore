@@ -6,3 +6,6 @@ venv/
 .env
 .idea/
 .vscode/
+.coverage
+htmlcov/
+.pytest_cache/

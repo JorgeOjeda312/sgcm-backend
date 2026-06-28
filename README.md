@@ -105,3 +105,45 @@ curl -X POST http://localhost:8000/roles/ \
 
 curl http://localhost:8000/pacientes/
 ```
+
+## 8. Pruebas unitarias y de integración (Tarea 02.04)
+
+Se utiliza **Pytest** como ejecutor principal, **unittest** y **unittest.mock**
+para las pruebas unitarias de la capa de servicios (equivalente a Mockito en
+Java), y **Coverage.py** (vía `pytest-cov`) para medir la cobertura. Las
+pruebas residen en [`tests/`](tests/):
+
+```
+tests/
+├── conftest.py            # Base de datos SQLite de pruebas + TestClient
+├── test_doctests.py        # Ejecuta los doctest de app/services/usuario_service.py
+├── unit/                   # Pruebas unitarias de cada servicio (repositorio simulado con Mock)
+└── integration/            # BaseRepository + flujo completo del API + validaciones
+```
+
+Instalación y ejecución:
+
+```bash
+pip install -r requirements.txt
+pip install pytest pytest-cov httpx coverage
+
+pytest
+```
+
+`pytest.ini` ya configura `--cov=app --cov-report=term-missing
+--cov-fail-under=60`, por lo que la ejecución falla si la cobertura de
+`app/` cae por debajo del 60 % exigido por la guía de la tarea. El reporte
+HTML detallado queda disponible en `htmlcov/index.html`.
+
+Resumen de lo cubierto:
+
+- **Unitarias (`tests/unit/`):** las reglas de negocio de los 11 servicios,
+  con énfasis en la máquina de estados de `CitaService` (todas las
+  transiciones válidas e inválidas del Diagrama de Estados de la Tarea
+  02.02), el hash de contraseñas (RNF-04) y la generación de correlativos
+  (certificados y comprobantes).
+- **Integración (`tests/integration/`):** `BaseRepository` contra una base
+  SQLite real, y el API completo (vía `TestClient`) reproduciendo el flujo
+  de agendamiento → atención → facturación, además de las rutas de error
+  (404/400/409) de cada controlador.
+

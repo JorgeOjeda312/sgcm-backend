@@ -21,3 +21,20 @@ siguiendo lo solicitado en la instrucción 7.1 de la guía de la tarea.
 > Nota: actualizar el enlace a cada *Issue* del repositorio (`#1`, `#2`, ...)
 > una vez creado en GitHub, y verificar que los commits reales del historial
 > reflejen la participación de cada integrante (mínimo 20 commits en total).
+
+## Tarea 02.04 — Pruebas unitarias
+
+| # | Tarea | Módulo / capa | Asignado a | Estado |
+| --- | --- | --- | --- | --- |
+| 12 | Configurar Pytest, Coverage.py y `conftest.py` (base de datos de pruebas) | `tests/conftest.py`, `pytest.ini`, `.coveragerc` | Jorge Ojeda | Cerrado |
+| 13 | Pruebas unitarias de Cita (máquina de estados) y Consulta | `tests/unit/test_cita_service.py`, `test_consulta_service.py` | Jorge Ojeda | Cerrado |
+| 14 | Pruebas unitarias de Prescripción, Orden, Certificado y Cuenta Contable | `tests/unit/test_prescripcion_service.py`, `test_orden_service.py`, `test_certificado_service.py`, `test_cuenta_service.py` | Cristhian Veloz | Cerrado |
+| 15 | Pruebas unitarias de Usuario (hash de contraseña + doctest) y Rol | `tests/unit/test_usuario_service.py`, `test_rol_service.py`, `tests/test_doctests.py` | Domenica Franco | Cerrado |
+| 16 | Pruebas unitarias de Paciente, Médico y Comprobante | `tests/unit/test_paciente_service.py`, `test_medico_service.py`, `test_comprobante_service.py` | Martha Cárdenas | Cerrado |
+| 17 | Pruebas de integración: BaseRepository y flujo completo del API | `tests/integration/` | Todo el equipo | Cerrado |
+
+> Nota: al subir estas pruebas, hacer **al menos un commit por tarea de la
+> tabla anterior** (idealmente uno por archivo de prueba) en lugar de un
+> único commit masivo, para cumplir el criterio de la rúbrica de T02.04 de
+> *"al menos 10 commits que aseguren que han trabajado todos los
+> compañeros"*.

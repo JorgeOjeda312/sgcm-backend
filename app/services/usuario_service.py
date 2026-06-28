@@ -9,6 +9,15 @@ from app.schemas.usuario import UsuarioCreate, UsuarioUpdate
 def _hash_password(password: str) -> str:
     """RNF-04: las contraseñas nunca se guardan en texto plano.
 
+    Devuelve el hash SHA-256 de ``password`` en formato hexadecimal.
+
+    >>> _hash_password("clave123") == _hash_password("clave123")
+    True
+    >>> len(_hash_password("clave123"))
+    64
+    >>> _hash_password("clave123") == "clave123"
+    False
+
     Nota académica: se usa sha256 con fines demostrativos; en un entorno
     productivo se debe usar bcrypt (factor de coste >= 12) tal como exige
     la SRS (RNF-04).
